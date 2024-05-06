@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // Kiểm tra xem có tệp nào đã được chọn hay không
     if (fileInput.files.length > 0) {
       const files = fileInput.files[0];
+      
+      if(!files.name.endsWith('.xlsx')){
+          alert("Vui lòng chọn file excel!");
+          return;
+      }
       // Tạo một FormData object và thêm tệp tin vào đó
       const file = new FormData();
       file.append("file", files);

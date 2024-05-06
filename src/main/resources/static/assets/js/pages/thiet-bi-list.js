@@ -8,10 +8,14 @@ document.addEventListener("DOMContentLoaded", function(event){
     });
     
     fileInput.addEventListener("change", function () {
-
         // Check if any file is selected
         if (fileInput.files.length > 0) {
             const files = fileInput.files[0];
+            // Check file type
+            if (!files.name.endsWith('.xlsx')) {
+                alert('Vui lòng chọn một tệp Excel (.xlsx).');
+                return;
+            }
             // Create a FormData object and append the file to it
             const file = new FormData();
             file.append('file', files);

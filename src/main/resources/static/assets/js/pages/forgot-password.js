@@ -46,7 +46,7 @@ $("#btnRecover").click(function (e) {
 //                    icon: "success",
 //                    confirmButtonText: "Ok"
 //                });
-                    window.location.href = "./forgot-password/confirm-otp";
+                    window.location.href = "/forgot-password/confirm-otp";
                 } else {
                     Swal.fire({
                         title: "Thông báo!",
@@ -77,8 +77,9 @@ $("#opt").click(function (e) {
             otp: otp,
         },
         success: function (response) {
+            console.log(response);
             if (response === true) {
-                window.location.href = "./confirm-otp/change-pass";
+                window.location.href = "/forgot-password/confirm-otp/change-pass";
             } else {
                 Swal.fire({
                     title: "Thông báo!",
