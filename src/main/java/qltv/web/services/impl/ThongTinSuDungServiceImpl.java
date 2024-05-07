@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import qltv.web.dto.ThongTinSuDungDTO;
 import qltv.web.dto.ThongTinSuDungResponse;
+import qltv.web.mappers.ThanhVienMapper;
 import qltv.web.mappers.ThongTinSuDungMapper;
 import qltv.web.models.ThongTinSuDung;
 import qltv.web.repositories.ThanhVienRepository;
@@ -178,5 +179,24 @@ public class ThongTinSuDungServiceImpl implements ThongTinSuDungService {
         response.setTotalElements(result.getTotalElements());
         response.setTotalPages(result.getTotalPages());
         return response;
+    }
+
+    @Override
+    public void vaoKhuHocTap(long maTV) {
+        ThongTinSuDungDTO ttsdDTO = new ThongTinSuDungDTO();
+        ttsdDTO.setMaTT(getMaxIdFlusOne());
+        ttsdDTO.setTgVao(new Date());
+        ttsdDTO.setTgMuon(null);
+        ttsdDTO.setTgTra(null);
+        ttsdDTO.setTgDatCho(null);
+        ttsdDTO.setThanhVien(ThanhVienMapper.mapToThanhVienDto(thanhVienReponsitory.findByMaTV(maTV)));
+        ttsdDTO.setThietBi(null);
+        saveThongTinSuDung(ttsdDTO);
+    }
+
+    @Override
+    public List<ThongTinSuDungDTO> getTTSDVaoKhuHocTapTrongNgay() {
+        List<ThongTinSuDung> thongTinSuDungs = (ArrayList) thongTinSuDungRepository.getTTSDVaoKhuHocTapTrongNgay();
+        return thongTinSuDungs.stream().map(thongTinSuDung -> ThongTinSuDungMapper.mapToThongTinSuDungDTO(thongTinSuDung)).collect(Collectors.toList());
     }
 }

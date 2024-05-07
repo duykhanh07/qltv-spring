@@ -45,5 +45,9 @@ public interface ThongTinSuDungService {
     public List<ThongTinSuDungDTO> getThongTinSuDungChuaTraTheoMaTV(long maTV);
     
     public ThongTinSuDungResponse getTTSDMuonTra(int pageNo, int pageSize, String query);
+    
+    public void vaoKhuHocTap(long maTV);
+
+    public List<ThongTinSuDungDTO> getTTSDVaoKhuHocTapTrongNgay();
 
 }
