@@ -34,6 +34,7 @@ public class SecurityConfig {
                         .requestMatchers("/xuly/**").permitAll()
                         .requestMatchers("/profile/**").permitAll()
                         .requestMatchers("/thongtinsudung/**").permitAll()
+                        .requestMatchers("/khuhoctap/**").permitAll()
                         .requestMatchers("/datchothietbi/**").permitAll()
                         .requestMatchers("/thietbi/**").permitAll()
                         .requestMatchers("/**").permitAll()

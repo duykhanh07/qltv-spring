@@ -1,0 +1,85 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{dashboard-layout}">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer th:src="@{/assets/js/pages/khu-hoc-tap.js}"></script>
+    <title>Vào khu học tập</title>
+</head>
+
+<body>
+    <div layout:fragment="body">
+        <h2 class="block-title">Nhập mã thành viên</h2>
+        <div class="block-header block-header-default">
+            <input type="text" class="form-control mx-2" placeholder="Nhập mã thành viên" name="input-MaThanhVien"
+                id="input-MaThanhVien" />
+            <div class="block-options">
+                <button id="btn-Vao" class="btn btn-success">
+                    <i class="fa fa-fw fa-plus me-1"></i> Vào khu học tập
+                </button>
+            </div>
+        </div>
+        <div class="block-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group py-2">
+                        <label for="input-HoTen">Họ Tên:</label>
+                        <input type="text" id="input-HoTen" name="input-HoTen" readonly class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group py-2">
+                        <label for="input-Email">Email:</label>
+                        <input type="text" id="input-Email" name="input-Email" readonly class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group py-2">
+                        <label for="input-Nganh">Ngành:</label>
+                        <input type="text" id="input-Nganh" name="input-Nganh" readonly class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group py-2">
+                        <label for="input-Khoa">Khoa:</label>
+                        <input type="text" id="input-Khoa" name="input-Khoa" readonly class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group py-2">
+                        <label for="input-SDT">SDT:</label>
+                        <input type="text" id="input-SDT" name="input-SDt" readonly class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <h2 class="block-title text-center py-2">Danh Sách Vào Khu Học Tập Trong Ngày</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-vcenter">
+                    <thead>
+                        <tr>
+                            <th>Mã TT</th>
+                            <th>Mã TV</th>
+                            <th>Tên TV</th>
+                            <th>Thời gian vào</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-ttsd">
+                        <tr th:each="ttsd : ${ttsds}">
+                            <td class="fw-semibold fs-sm" th:utext="${ttsd.getMaTT()}"></td>
+                            <td class="fs-sm" th:utext="${ttsd.getThanhVien().getMaTV()}"></td>
+                            <td class="fs-sm" th:utext="${ttsd.getThanhVien().getHoTen()}"></td>
+                            <td class="fs-sm" th:utext="${ttsd.getTgVao()}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

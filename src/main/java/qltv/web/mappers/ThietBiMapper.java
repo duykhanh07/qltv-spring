@@ -8,7 +8,8 @@ public class ThietBiMapper {
 
     public static ThietBi mapToThietBi(ThietBiDTO tb) {
         if (tb == null) {
-            return new ThietBi();
+            return null;
+//            return new ThietBi();
         }
         ThietBi model = ThietBi.builder()
                 .maTB(tb.getMaTB())
