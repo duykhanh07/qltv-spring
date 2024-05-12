@@ -34,6 +34,7 @@ import qltv.web.services.XuLyService;
  *
  * @author DELL
  */
+@Controller
 public class ProfileController {
 
     private ThanhVienService tvService;

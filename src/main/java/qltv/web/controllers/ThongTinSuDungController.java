@@ -116,7 +116,7 @@ public class ThongTinSuDungController {
         if (thongTinSuDungService.thietBiDangDuocDatCho(ttsdDTO.getThietBi().getMaTB())) {
             return "Thiết bị đã được đặt chổ trong hôm nay";
         }
-        if(xuLyService.thanhVienDangBiXuLy(ttsdDTO.getThanhVien().getMaTV())){
+        if (xuLyService.thanhVienDangBiXuLy(ttsdDTO.getThanhVien().getMaTV())) {
             return "Thành viên đang bị xử lý vi phạm";
         }
         try {
@@ -147,7 +147,7 @@ public class ThongTinSuDungController {
             return "redirect:/login";
         }
         Long maTV = Long.parseLong(username);
-        ThanhVienDTO user = thanhVienService.findMemberById(maTV); 
+        ThanhVienDTO user = thanhVienService.findMemberById(maTV);
         List<ThongTinSuDungDTO> ttsds = thongTinSuDungService.getAllThongTinSuDungChuaTra();
         model.addAttribute("user", user);
         model.addAttribute("ttsds", ttsds);
